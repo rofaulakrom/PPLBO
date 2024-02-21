@@ -1,0 +1,113 @@
+package com.blog.vo;
+
+import java.util.Date;
+
+
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "comment")
+public class Comment {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id")
+	private Long id;
+	
+	@Column(name="postId")
+	private Long postId;
+	
+	@Column(name="user")
+	private String user;
+	
+	@Column(name="comment")
+	private String comment;
+	
+	@Column(name="regDate")
+	private Date regDate;
+	
+	public Comment() {
+		
+	}
+	
+	public Comment(Long postId, String user, String comment) {
+		this.postId = postId;
+		this.user = user;
+		this.comment = comment;
+		this.regDate = new Date();
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public Long getPostId() {
+		return postId;
+	}
+	
+	public void setPostId(Long postId) {
+		this.postId = postId;
+	}
+	
+	public String getUser() {
+		return user;
+	}
+	
+	public void setUser(String User) {
+		this.user = user;
+	}
+	
+	public String getUser() {
+		return User;
+	}
+	
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+	public Date getRegDate() {
+		return regDate;
+	}
+	
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+
+}
+	
+	
+	
+	public Date getUpdtDate() {
+		return updtDate;
+	}
+	
+	public void setUpdtDate(Date updtDate) {
+		this.updtDate = updtDate;
+	}
+	
+	public Post(String user, String title, String content) {
+		this.user = user;
+		this.title = title;
+		this.content = content;
+		this.regDate= new Date();
+		this.updtDate = new Date();
+	}
+	
+	public Post(Long id, String title, String content) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.content = content;
+	}
+
+}

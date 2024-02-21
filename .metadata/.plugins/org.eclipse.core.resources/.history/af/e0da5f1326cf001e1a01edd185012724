@@ -1,0 +1,11 @@
+package com.blog.vo;
+
+public class Result {
+	int result;
+	String message;
+	
+	public Result() {
+		
+	}
+
+}

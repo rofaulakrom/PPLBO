@@ -1,0 +1,23 @@
+package com.blog.repository;
+
+import java.io.Serializable;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
+import com.blog.mapper.PostMapper;
+import com.blog.vo.Post;
+
+@Repository("PostJpaRepository")
+public interface PostJpaRepository extends JpaRepository<Post, Serializable> {
+	Post findOneById(Long id);
+	
+	List<Post> findAllByOrderByUpdtDateDesc();
+	public List<Post> findPostOrderByUpdtDateAsc() {
+		String sql = "SELECT * FROM post ORDER BY updt_date ASC";
+		RowMapper<Post> rowMapper = new PostMapper();
+		return this.jdbcTemplate.query(sql, rowMapper);
+	}
+}

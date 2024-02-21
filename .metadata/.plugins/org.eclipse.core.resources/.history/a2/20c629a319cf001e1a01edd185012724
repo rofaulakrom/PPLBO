@@ -1,0 +1,14 @@
+package com.blog.mapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import com.blog.vo.Post;
+
+public class PostMapper implements RowMapper<Post>{
+	
+	@Override
+	public
+}

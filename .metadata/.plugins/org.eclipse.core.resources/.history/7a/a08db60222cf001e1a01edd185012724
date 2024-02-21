@@ -1,0 +1,28 @@
+package com.blog.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class PostPageController {
+	
+	@RequestMapping("/page/index")
+	public String getIndexPage() {
+		return "index";
+	}
+	
+	@RequestMapping("/page/detail/{id}")
+	public String getDetailPage(@PathVariable("id")int id, Model model) {
+		model.addAttribute("id", id);
+		return "detail";
+	}
+	
+	public List<Post> findPostOrderByRegDateDesc() {
+		String sql = "SELECT * FROM post ORDER BY reg_date DESC";
+		RowMapper<Post> rowMapper = new PostMapper();
+		return this.jdbcTemplate.query(sql, rowMapper);
+	}
+
+}
